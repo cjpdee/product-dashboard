@@ -1,33 +1,49 @@
 import React from "react";
 import "./App.css";
 
-import ProductListItem from "./components/Product/ListItem.tsx";
+import ProductListItem from "./components/Product/Product.tsx";
 
-interface apiSchema {
-    items: [
-        {
-            id: string;
-            product_name: string;
-            category: string;
-            size_uk: number;
-            colour: string;
-            customer_initials: string;
-            status: 0 | 1 | 2 | 3;
-        }
-    ];
+import { ProductList } from "./types/types.ts";
+
+import data from "./mockdata.js";
+import { ENTRIES_PER_PAGE } from "./constants";
+
+interface appState extends ProductList {
+    items: ProductList;
+    activeFilter: 0 | 1 | 2 | 3 | null;
+    currentPage: number;
+    numPages: number;
 }
+
 // TODO: consider changing this to function?
 class App extends React.Component {
-    state = {
-        items: [{}]
+    state: appState = {
+        items: data,
+        numPages: 1, // this.state.items.length / ENTRIES_PER_PAGE,
+        activeFilter: null,
+        currentPage: 1
     };
+
     render() {
+        console.log(this.state);
         return (
-            <div className="App">
-                <header className="App-header"></header>
-                <div>
-                    {this.state.items.map(item => {
-                        return <ProductListItem props={item}></ProductListItem>;
+            <div className="page">
+                <header className="page__header"></header>
+                <div className="page__body">
+                    {this.state.items.map((item, key) => {
+                        // TODO: this needs fixing
+                        if (
+                            key >=
+                            (this.state.currentPage + 1) * ENTRIES_PER_PAGE
+                        )
+                            return;
+                        else
+                            return (
+                                <ProductListItem
+                                    {...item}
+                                    key={item.id}
+                                ></ProductListItem>
+                            );
                     })}
                 </div>
             </div>
