@@ -1,0 +1,26 @@
+app (with state)
+    filters
+    pages
+        foreach => entries
+            entry
+                - if colour is over a certain number of characters, strip the vowels from the display - however there must be at least 3 characters visible to differentiate black and blue
+
+
+api schema {
+    id: string,
+    product_name:string,
+    category: string,
+    uk size: number, (size:array[uk]:string ?)
+    colour: string,
+    customer_initials: string,
+    status: number, (0 oos, 1 in queue, 2 on the way, 3 ready to try)
+}
+
+
+ID
+Product_name
+Category
+Size
+Colour
+Status
+Customers_Initials
