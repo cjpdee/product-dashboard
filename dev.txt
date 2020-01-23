@@ -19,6 +19,7 @@ api schema {
 
 ID
 Product_name
+Image
 Category
 Size
 Colour

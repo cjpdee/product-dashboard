@@ -7,7 +7,7 @@ interface FilterProps {
     handleClick(value: number): void;
 }
 
-class Filter extends React.Component<FilterProps> {
+export default class Filter extends React.Component<FilterProps> {
     constructor(props) {
         super(props);
     }
@@ -19,7 +19,7 @@ class Filter extends React.Component<FilterProps> {
                     this.props.handleClick(this.props.value);
                 }}
             >
-                <div>colour</div>
+                <div>{this.props.value}</div>
                 <span>{this.props.label}</span>
             </button>
         );

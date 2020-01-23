@@ -3,12 +3,11 @@ import React from "react";
 import { ProductData } from "../../types/types.ts";
 
 export default class ProductListItem extends React.Component<ProductData> {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     // TODO: add image to api
     render() {
-        console.log(this.props.product_name);
         return (
             <div>
                 <div className={this.statusClass(this.props.status)}>
@@ -18,6 +17,7 @@ export default class ProductListItem extends React.Component<ProductData> {
                     <img src="" alt="" />
                 </div>
                 <span>{this.props.product_name}</span>
+                <br />
                 <span>{this.props.category}</span>
                 <span>{this.props.size_uk}</span>
                 <span>{this.props.colour}</span>
