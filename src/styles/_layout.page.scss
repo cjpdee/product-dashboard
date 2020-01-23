@@ -1,0 +1,35 @@
+$module: "page";
+
+.#{$module} {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 100vh;
+    height: 100%;
+    background-color: $color-body;
+    padding: 0 em(35);
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 0 1 auto;
+        padding: em(35) 0;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        padding: em(5) 0;
+    }
+
+    &__footer {
+        flex: 0 1 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}

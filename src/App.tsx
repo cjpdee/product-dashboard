@@ -1,8 +1,8 @@
 import React from "react";
-import "./App.css";
 
 import ProductListItem from "./components/Product/Product.tsx";
 import Filter from "./components/Filter/Filter.tsx";
+import Pagination from "./components/Pagination/Pagination.tsx";
 
 import { ProductData } from "./types/types.ts";
 
@@ -16,7 +16,6 @@ interface appState {
     numPages: number;
 }
 
-// TODO: consider changing this to function?
 class App extends React.Component {
     state: appState = {
         items: data,
@@ -26,22 +25,12 @@ class App extends React.Component {
     };
 
     getCurrentPageData(): ProductData[] {
-        // TODO:
-        // first this.state.items must be reduced by the selected filter if it exists
         let output = [...this.state.items];
+
         if (this.state.activeFilter !== null)
             output = this.state.items.filter(item => {
-                console.log(item);
                 return item.status === this.state.activeFilter;
             });
-
-        console.log(
-            "output",
-            output.slice(
-                this.state.currentPage * ENTRIES_PER_PAGE,
-                (this.state.currentPage + 1) * ENTRIES_PER_PAGE
-            )
-        );
 
         return output.slice(
             this.state.currentPage * ENTRIES_PER_PAGE,
@@ -64,22 +53,23 @@ class App extends React.Component {
                                         activeFilter: chosenFilter
                                     });
                                 }}
-                            ></Filter>
+                            />
                         );
                     })}
                 </header>
                 <main className="page__body">
                     {this.getCurrentPageData().map(item => {
-                        return (
-                            <ProductListItem
-                                {...item}
-                                key={item.id}
-                            ></ProductListItem>
-                        );
+                        return <ProductListItem {...item} key={item.id} />;
                     })}
                 </main>
-                <footer>
-                    <div>pagination</div>
+                <footer className="page__footer">
+                    <Pagination
+                        numPages={this.state.numPages}
+                        currentPage={this.state.currentPage}
+                        handleClick={chosenPage => {
+                            this.setState({ currentPage: chosenPage });
+                        }}
+                    />
                     <span>
                         {this.state.currentPage + 1} | {this.state.numPages}
                     </span>

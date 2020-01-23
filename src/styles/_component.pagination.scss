@@ -1,0 +1,24 @@
+$module: "pagination";
+
+.#{$module} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+
+    &__item {
+        display: block;
+        $size: em(10);
+        width: #{$size};
+        height: #{$size};
+        padding: 0;
+        margin: em(5);
+        background-color: $color-content-alpha;
+        border: none;
+        border-radius: 50%;
+    }
+
+    &__item--active {
+        background-color: $color-affirmative;
+    }
+}

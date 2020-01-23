@@ -25,3 +25,7 @@ Size
 Colour
 Status
 Customers_Initials
+
+TODO:
+- Add a 'remove filters' option & grey out unselected filters / highlight selected filter (pick 1)
+- add animations to products

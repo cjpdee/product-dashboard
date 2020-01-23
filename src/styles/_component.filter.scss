@@ -1,0 +1,44 @@
+$module: "filter";
+
+.#{$module} {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+
+    &__status {
+        $size: em(22);
+        width: #{$size};
+        height: #{$size};
+        margin-right: em(6);
+        border: 1px solid $color-content-alpha;
+        border-radius: 50%;
+
+        &--ready-to-try {
+            background-color: $color-ready-to-try;
+        }
+
+        &--on-the-way {
+            background-color: $color-on-the-way;
+        }
+
+        &--in-the-queue {
+            background-color: $color-in-the-queue;
+        }
+
+        &--out-of-stock {
+            background-color: $color-out-of-stock;
+        }
+    }
+
+    &__label {
+        text-transform: uppercase;
+        color: $color-content-alpha;
+
+        font-size: em(11);
+        font-weight: $fw-bold;
+        letter-spacing: em(3);
+    }
+}

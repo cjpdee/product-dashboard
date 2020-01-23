@@ -1,8 +1,8 @@
 export const FILTERS = [
-    "Out of stock",
-    "In the queue",
+    "Ready to try",
     "On the way",
-    "Ready to try"
+    "In the queue",
+    "Out of stock"
 ];
 
 export const ENTRIES_PER_PAGE = 4;
