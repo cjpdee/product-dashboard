@@ -1,12 +1,20 @@
 $module: "pagination";
 
 .#{$module} {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    margin-left: auto;
+    padding: em(20) 0;
 
-    &__item {
+    &__indicators {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__indicator {
         display: block;
         $size: em(10);
         width: #{$size};
@@ -18,7 +26,48 @@ $module: "pagination";
         border-radius: 50%;
     }
 
-    &__item--active {
+    @keyframes scaleAndReturn {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    &__indicator--active {
         background-color: $color-affirmative;
+        animation: scaleAndReturn 0.15s;
+    }
+
+    &__numbers {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__current,
+    &__total {
+        display: block;
+        padding: em(8) em(10);
+    }
+
+    &__current {
+        font-weight: $fw-black;
+        font-size: em(22);
+    }
+
+    &__total {
+        font-weight: $fw-regular;
+        font-size: em(18);
+
+        border-left: 1px solid $color-content-alpha;
     }
 }

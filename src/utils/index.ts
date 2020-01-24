@@ -4,3 +4,7 @@ export function convertKebabCase(text:string):string {
             .join("-")
             .toLowerCase();
 }
+
+export function leadingZero(num:number):string {
+    return num < 10 && "0" + num.toString();
+}

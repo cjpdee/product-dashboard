@@ -5,16 +5,6 @@ import { convertKebabCase } from "../../utils/index.ts";
 import { FILTERS } from "../../constants/index";
 
 export default class ProductListItem extends React.Component<ProductData> {
-    // TODO: add image to api
-    // TODO: rename 'product' to something more generic
-    // TODO: replace all 'colour' with 'color'
-    // TODO: use vw scaling? ???
-    // TODO: add some client side validation to check there are no id duplicates possibly although this should be handled by server
-    // TODO: numPages should be adjusted according to filters
-    componentWillUpdate() {
-        console.log("updating <Product>");
-    }
-
     render() {
         return (
             <div className="product">
@@ -29,27 +19,26 @@ export default class ProductListItem extends React.Component<ProductData> {
                 <div className="product__content">
                     <div className="product__image">
                         <img
-                            src="https://images-na.ssl-images-amazon.com/images/I/71AoUS3O4RL._AC_UX500_.jpg"
-                            alt=""
+                            src={this.props.image}
+                            alt={this.props.product_name}
                         />
                     </div>
                     <span className="product__title">
                         {this.props.product_name}
                     </span>
-                    <br />
-                    <div>
+                    <div className="product__content-item">
                         <span className="product__detail">Category:</span>
                         <span className="product__detail product__detail--black">
                             {this.props.category}
                         </span>
                     </div>
-                    <div>
+                    <div className="product__content-item">
                         <span className="product__detail">Size:</span>
                         <span className="product__detail product__detail--black">
                             UK {this.props.size_uk}
                         </span>
                     </div>
-                    <div>
+                    <div className="product__content-item">
                         <span className="product__detail">Colour:</span>
                         <span className="product__detail product__detail--black">
                             {this.props.colour}

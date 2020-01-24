@@ -41,4 +41,30 @@ $module: "filter";
         font-weight: $fw-bold;
         letter-spacing: em(3);
     }
+
+    &__cross {
+        position: relative;
+        $size: em(22);
+        width: #{$size};
+        height: #{$size};
+        margin-right: em(6);
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            width: em(3);
+            height: 100%;
+            border-radius: em($border-radius);
+            background-color: $color-content-bravo;
+            left: 50%;
+            transform-origin: center;
+        }
+
+        &:before {
+            transform: translateX(-50%) rotate(45deg);
+        }
+        &:after {
+            transform: translateX(-50%) rotate(-45deg);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 export interface ProductData {
     id: string;
     product_name: string;
+    image: string;
     category: string;
     size_uk: number;
     colour: string;
